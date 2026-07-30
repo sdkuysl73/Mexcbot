@@ -1,0 +1,27 @@
+name: MEXC EMA Bot
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodu Çek
+        uses: actions/checkout@v4
+
+      - name: Python Kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Paketleri Kur
+        run: |
+          pip install -r requirements.txt
+
+      - name: Botu Çalıştır
+        run: |
+          python main.py
